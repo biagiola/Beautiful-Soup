@@ -76,6 +76,66 @@ simple_soup = BeautifulSoup(simple_tree, 'html.parser')
 # we can always print it in a familiar structure.
 print(simple_soup.prettify())
 
+# if we want just a list of the children we could use the Contents attribute
+a_content = simple_soup.a.contents
+# display the list
+print(a_content)
+# display the first child
+print(a_content[0])
+
+# if we want to create a generator to iterate over them vice a list we can use
+# the `children` attribute
+for child in simple_soup.a.children:
+    print(child)
+# same as above
+for child in a_content
+    print(child)
+
+#*#
+
+# count the number of elements in both the childre and the descendants
+print(len(list(simple_soup.a.children)))
+print(len(list(simple_soup.a.descendants)))
+
+# loop through the descendants itarator
+for descendant in simple_soup.a.descendants:
+    print(descendant)
+
+#*#
+
+# get the parent of the a tag
+print(simple_soup.a.parent)
+# get the parent of the parent of the a tag
+print(simple_soup.a.parent.parent) 
+# Loop through all the parents of the 'a' tag
+for parent in simple_soup.a.parents:
+    print(parent)
+
+#*#
+# Siblings
+# print b
+print(simple_soup.b)
+# does the b have a sibling?
+print(simple_soup.b.next_sibling)
+print(simple_soup.c.previous_sibling)
+
+#*#
+# we take the fifth table
+my_table = soup.find_all('table')[5] 
+# using next element
+print(my_table.next_element)    
+for child in my_table.children: # children is more direct
+    print(child) 
+
+#*#
+# grab the body
+print(simple_soup.body)
+# go to the next element
+print(simple_soup.body.next_element)
+print('break')
+for element in simple_soup.b.next_elements:
+    print(element)
+
 
 
 
