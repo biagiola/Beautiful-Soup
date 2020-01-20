@@ -42,6 +42,40 @@ print(type(paragraphAll)) # output <class 'bs4.element.ResultSet'> (its not a li
 # the length of our result set object
 print(len(paragraphAll)) # how many p tags are.
 
+links = soup.find_all('a', href = True)
+# loop through the result set 
+for link in links[0:10]:
+    print('href attr = ', link['href'])
+    try:
+        print('title attr = ', link['title']) # if it has title
+    except:
+        continue # else continue
+
+# search for tables and a tags
+h1_and_small_tags = soup.find_all(['h1', 'small'])
+print(h1_and_small_tags)
+
+# tables header with a particular style
+table_headers = soup.find_all('th', style="width: 10%")
+
+wiki_tables = soup.find_all('table', class_="wikitable") 
+print(wiki_tables)
+
+# define a function to find the items
+def list_withlinks(tag):
+    return tag.name == 'li' and len(tag.find_all('a'))>20
+
+# list items with a tags
+list_with_a = soup.find_all(list_withlinks)
+print(list_with_a)
+
+# define the simple tree we see above.
+simple_tree = """<html><body><a><b>text1</b><c>text2</c></a></body></html>"""
+# pass the simple tree into our Parser to create some simple soup.
+simple_soup = BeautifulSoup(simple_tree, 'html.parser')
+# we can always print it in a familiar structure.
+print(simple_soup.prettify())
+
 
 
 
