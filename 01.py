@@ -136,6 +136,68 @@ print('break')
 for element in simple_soup.b.next_elements:
     print(element)
 
+#*#
+# find_parents()
+# print('b', simple_soup.b)
+# print('b parent', simple_soup.b.find_parent())
+# print('b parents', simple_soup.b.find_parents())
+
+# find_next_sibling()
+print('b', simple_soup.b)
+print('b sibling', simple_soup.b.find_next_sibling())
+print('b siblings', simple_soup.b.find_next_siblings())
+#same of previous_simbling()
+
+# find_next()
+print('a', simple_soup.a)
+print('a next', simple_soup.a.find_next())
+print('a nexts', simple_soup.a.find_all_next())
+#same of find_previous()
+
+#*#
+# grab all the tables
+table = soup.find_all('table')[5]
+print(table.prettify())
+
+#*#
+# grab all the tables
+table = soup.find_all('table')[5]
+# grab the a tag
+a_tag = table.a
+print(a_tag)
+print(a_tag['href'])
+# adding a new attribute value
+a_tag['style'] = 'background: blue' 
+print(a_tag)
+
+# print(table.prettify())
+
+#*#
+# it is like innerHTML from js
+a_tag.string = "My new String"
+print(a_tag)
+# delete the inner text of a tag
+a_tag.clear(); 
+print(a_tag)
+
+#*#
+print('body', table.tbody)
+# extract the first table header
+th_tag = table.tbody.th.extract()
+# display the extracted tag
+print('th_tag', th_tag)
+
+#*#
+# grab the first string that you find in the table header tag
+print('table.th.string: ', table.th.string)
+# get all the strings that belong to a table body
+# first we must to convert into a list a slice it for practical reasons
+for string in list(table.tbody.strings)[0:10]:
+    print(string)
+print('--------')
+# same as above but ignoring the line breaks
+for string in list(table.tbody.stripped_strings)[0:10]:
+    print(string)
 
 
 
