@@ -9,7 +9,7 @@ response_object = urllib.request.urlopen(wiki_url)
 
 # creating the soup
 soup = BeautifulSoup( response_object, 'html.parser')
-print(soup)
+print(soup) # it print all the tags from the url
 
 # find the first instance of an anchor tag
 link = soup.find('a') # the first a tag
