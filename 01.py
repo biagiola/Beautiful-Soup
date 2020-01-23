@@ -16,10 +16,10 @@ link = soup.find('a') # the first a tag
 link = soup.find('a', href = True) # the first a tag with href in it
 print(link)
 
-# what is the type
+# bs4 element
 print(type(link)) # output <class 'bs4.element.Tag'>
 
-# define the name
+# print the tag's name
 print(link.name) # output a
 
 # get the dictionary of all the attributes with its values
